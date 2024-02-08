@@ -10,7 +10,7 @@ tensorflow-datasets
 keras==2.10.0
 
 # Image processing
-Pillow
+Pillow==9.1.1
 opencv-python==4.7.0.72
 opencv-python-headless==4.9.0.80
 

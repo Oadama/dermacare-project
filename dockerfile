@@ -19,5 +19,6 @@ RUN pip install --ignore-installed google-auth==2.27.0
 RUN pip install python-multipart==0.0.6
 RUN apt-get update && apt-get install -y python3-opencv
 RUN pip install opencv-python==4.7.0.72
+RUN pip install docker build --tag=$GAR_IMAGE:dev .
 
 CMD uvicorn backend:app --host 0.0.0.0 --port $PORT
