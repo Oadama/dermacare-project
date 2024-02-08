@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-#from PIL import Image
+from PIL import Image
 from st_pages import Page, show_pages, add_page_title
 from pathlib import Path
 
@@ -150,7 +150,6 @@ if uploaded_file is not None:
         bytes_data = uploaded_file.getvalue()
 
         res = requests.post(url, files={'img': bytes_data})
-        print(res.status_code)
         if res.status_code == 200:
             #st.write(res.content)
             response=res.json()
