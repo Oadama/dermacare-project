@@ -31,12 +31,12 @@ app.add_middleware(
 # Predict end point
 @app.post("/predict_cnn")
 
-async def predict_cnn(img: UploadFile=File(...)):
+def predict_cnn(img: UploadFile=File(...)):
     ### Receiving and decoding the image
     if app.state.model== None:
         return {'message': f"\n❌ No model found where asked"}
 
-    contents = await img.read()
+    contents = img.read()
     timestamp = str(time.time()).replace(".","")
     file_name=f"{timestamp}.jpg"
     # os.path.join(os.path.expanduser('~'), ".lewagon", "mlops", "project_outputs")
