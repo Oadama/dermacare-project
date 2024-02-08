@@ -150,6 +150,7 @@ if uploaded_file is not None:
         bytes_data = uploaded_file.getvalue()
 
         res = requests.post(url, files={'img': bytes_data})
+        print(res.status_code)
         if res.status_code == 200:
             #st.write(res.content)
             response=res.json()
