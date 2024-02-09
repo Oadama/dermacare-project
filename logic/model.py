@@ -117,7 +117,7 @@ def train_model(
         validation_data,
         model_type:str=MODEL_TYPE,
         batch_size=BATCH_SIZE,
-        epochs:int=1,
+        epochs:int=64,
         patience:int=2,
         verbose:int=0,
         factor:float=0.5,

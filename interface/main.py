@@ -63,7 +63,7 @@ model=compile_model(model, MODEL_TYPE)
 #train the model
 patience=2
 verbose=1
-epochs=1
+epochs=64
 
 
 if str.upper(MODEL_TYPE) in ['DENSENET201', 'DENSENET121']:
