@@ -9,14 +9,12 @@ from logic.model import compile_model
 from google.oauth2 import service_account
 
 
-
 def save_model(model: keras.Model = None,model_type:str=MODEL_TYPE) -> None:
     """
     Persist trained model locally on the hard drive at f"{LOCAL_REGISTRY_PATH}/models/{timestamp}.h5"
     - if MODEL_TARGET='gcs', also persist it in your bucket on GCS at "models/{timestamp}.h5" --> unit 02 only
     - if MODEL_TARGET='mlflow', also persist it on MLflow instead of GCS (for unit 0703 only) --> unit 03 only
     """
-
     timestamp = time.strftime("%Y%m%d-%H%M%S")
 
     # Save model locally

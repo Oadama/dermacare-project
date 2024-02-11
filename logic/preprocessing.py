@@ -11,6 +11,7 @@ from shutil import copyfile
 from keras.preprocessing.image import ImageDataGenerator
 from keras.applications.densenet import preprocess_input
 
+
 def initialize_dataset_from_file(url_file_name,extract:bool=False,archive_format:str=None):
     """
     Load tensorflow dataset and return local data path
@@ -20,6 +21,7 @@ def initialize_dataset_from_file(url_file_name,extract:bool=False,archive_format
                                    extract=extract,
                                    archive_format  = archive_format)
     return os.path.split(data_dir)[0]
+
 
 def get_split_image_data(parent_path, child_path, img_height:int=IMAGE_HEIGHT, img_width:int=IMAGE_WIDTH,batch_size:int=BATCH_SIZE ):
     """
@@ -34,9 +36,11 @@ def get_split_image_data(parent_path, child_path, img_height:int=IMAGE_HEIGHT, i
 
     return bloc
 
+
 def class_names(df):
     # return the class names
     return df.class_names
+
 
 def data_augmentation(img_height:int,img_width:int, val_rotation:float=0.1, val_zoom:float=0.1):
 
@@ -52,10 +56,12 @@ def data_augmentation(img_height:int,img_width:int, val_rotation:float=0.1, val_
     )
     return result
 
+
 def normalisation(data_source):
 
     normalization_layer = keras.layers.Rescaling(1./255)
     return data_source.map(lambda x, y: (normalization_layer(x), y))
+
 
 def images_augmentation_class(folder_class, augmented_folder,factor_mult:int, file_suffix:str='jpg'):
     """
@@ -85,6 +91,7 @@ def images_augmentation_class(folder_class, augmented_folder,factor_mult:int, fi
             X_aug=image_transforme(img, i+1)
             #save the data
             cv2.imwrite(f'{augmented_folder}/{write_path}_{i}.jpg', X_aug)
+
 
 def transformer_augmentation(min_rotation, max_rotation):
 
@@ -120,6 +127,7 @@ def image_transforme(datagen,image_content):
 
 
     return X_aug
+
 
 def densenet201_preprocess(X,y):
     # expected transformation for 201 or 121 uses

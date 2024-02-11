@@ -53,7 +53,6 @@ def initialize_model(num_classes:int,
         layers.Dense(num_classes, activation='softmax')
         ])
     elif str.upper(model_type) == 'DENSENET121':
-
         model_d=DenseNet121(
                 weights='imagenet',
                 include_top=False,
@@ -86,11 +85,11 @@ def initialize_model(num_classes:int,
 
     return model
 
+
 def compile_model(model:Model, model_type:str=MODEL_TYPE) -> Model:
     """
     Compile the defined CNN model
     """
-
     if model_type.upper() == 'DERMA':
         loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True)
         opt='adam'
@@ -111,6 +110,7 @@ def compile_model(model:Model, model_type:str=MODEL_TYPE) -> Model:
     print(f'✅ Model compiled')
     return model
 
+
 def train_model(
         model:Model,
         X:np.ndarray,
@@ -125,11 +125,9 @@ def train_model(
         save_best_only:bool=True,
         restore_best_weights:bool=True
     ) :
-
     """
     Fit the model and return a tuple (fitted_model, history)
     """
-
     if str.upper(model_type) == 'DERMA':
         monitor="val_loss"
         mode='max'
@@ -184,6 +182,7 @@ def train_model(
 
     return model, history
 
+
 def evaluate_model(
         model: Model,
         X: np.ndarray,
@@ -192,7 +191,6 @@ def evaluate_model(
     """
     Evaluate trained model performance on the dataset
     """
-
     if model is None:
         print(f"\n❌ No model to evaluate")
         return None
